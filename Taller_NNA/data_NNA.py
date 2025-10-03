@@ -5,9 +5,6 @@ CRISP-DM · Data Understanding (VS Code + Git)
 Script: data_NNA.py
 Descripción: Análisis descriptivo y exploratorio (EDA) minimalista que
              genera tablas e imágenes (gráficos) para una base Excel/CSV.
-Nota: Mantiene la misma estructura general del script anterior, pero
-      implementa localmente utilidades que antes venían de `src.*` para
-      que el archivo sea auto-contenido.
 """
 from __future__ import annotations
 
@@ -23,7 +20,7 @@ import matplotlib.pyplot as plt
 
 
 # ---------------------------------------------------------------------
-# Reemplazos locales de utilidades que en el script previo venían de src.*
+# Utilidades locales
 # ---------------------------------------------------------------------
 def get_logger() -> logging.Logger:
     """Logger sencillo a consola."""
@@ -47,21 +44,30 @@ def _detect_sep(csv_path: str, candidates: List[str] = [",", ";", "\t", "|"]) ->
     """Heurística simple para detectar separador en CSV."""
     with open(csv_path, "r", encoding="utf-8", errors="ignore") as f:
         head = f.readline()
-    best_sep = ","
-    best_count = -1
+    best_sep, best_count = ",", -1
     for s in candidates:
         cnt = head.count(s)
         if cnt > best_count:
-            best_count = cnt
-            best_sep = s
+            best_sep, best_count = s, cnt
     return best_sep
 
 
 def read_any(path: str, sep: str = "auto", sheet: Optional[Union[int, str]] = None) -> pd.DataFrame:
-    """Lee Excel o CSV con separador auto-detectado (si procede)."""
+    """
+    Lee Excel o CSV con separador auto-detectado (si procede).
+    Para Excel prueba header=0,1,2 hasta encontrar columnas válidas.
+    """
     ext = os.path.splitext(path.lower())[1]
+
+    # Archivos Excel
     if ext in [".xlsx", ".xls"]:
-        return pd.read_excel(path, sheet_name=sheet)
+        for h in [0, 1, 2]:
+            df = pd.read_excel(path, sheet_name=sheet, header=h)
+            if df.shape[1] > 0:
+                return df
+        # fallback
+        return pd.read_excel(path, sheet_name=sheet, header=None)
+
     # CSV u otros delimitados
     if sep == "auto":
         sep = _detect_sep(path)
@@ -95,10 +101,7 @@ def data_dictionary(df: pd.DataFrame) -> pd.DataFrame:
         nunique = int(s.nunique(dropna=True))
         missing = int(s.isna().sum())
         missing_pct = (missing / n) * 100 if n > 0 else 0.0
-        sample_vals = (
-            s.dropna().astype(str).head(3).tolist()
-            if non_null > 0 else []
-        )
+        sample_vals = s.dropna().astype(str).head(3).tolist() if non_null > 0 else []
         row: Dict[str, object] = {
             "column": c,
             "dtype": dtype,
@@ -108,18 +111,13 @@ def data_dictionary(df: pd.DataFrame) -> pd.DataFrame:
             "missing_pct": round(missing_pct, 2),
             "sample": " | ".join(sample_vals),
         }
-        # Extras mínimos para numéricas
         if np.issubdtype(s.dtype, np.number):
             row["min"] = float(np.nanmin(s)) if non_null > 0 else None
             row["max"] = float(np.nanmax(s)) if non_null > 0 else None
             row["mean"] = float(np.nanmean(s)) if non_null > 0 else None
         out.append(row)
     dd = pd.DataFrame(out)
-    return dd[
-        ["column", "dtype", "non_null", "nunique", "missing", "missing_pct", "sample", "min", "max", "mean"]
-    ] if "min" in dd.columns else dd[
-        ["column", "dtype", "non_null", "nunique", "missing", "missing_pct", "sample"]
-    ]
+    return dd
 
 
 def save_dictionary_csv(dd: pd.DataFrame, path: str) -> None:
@@ -131,7 +129,7 @@ def quality_flags(df: pd.DataFrame, dd: pd.DataFrame) -> Dict[str, object]:
     n = len(df)
     high_missing_cols = dd.loc[dd["missing_pct"] > 30, "column"].tolist() if "missing_pct" in dd else []
     constant_cols = dd.loc[dd["nunique"] <= 1, "column"].tolist() if "nunique" in dd else []
-    suspected_ids = dd.loc[dd["nunique"] >= max(2, int(n * 0.9)), "column"].tolist() if n > 0 else []
+    suspected_ids = dd.loc[dd["nunique"] >= max(2, int(n * 0.9)), "column"].tolist() if n > 0 and "nunique" in dd else []
     dup_rows = int(df.duplicated().sum())
     return {
         "rows": n,
@@ -143,16 +141,12 @@ def quality_flags(df: pd.DataFrame, dd: pd.DataFrame) -> Dict[str, object]:
 
 
 # ------------------------------
-# Gráficos (guardan a disco)
+# Gráficos
 # ------------------------------
-def _safe_close(fig):
-    fig.tight_layout()
-    fig.savefig_kwargs = {}  # placeholder para consistencia si se quiere extender
-    plt.close(fig)
-
-
 def plot_missing_bar(df: pd.DataFrame, outfile: str) -> None:
     miss_pct = df.isna().mean().sort_values(ascending=True) * 100.0
+    if len(miss_pct) == 0:
+        return
     fig, ax = plt.subplots(figsize=(10, max(4, len(miss_pct) * 0.25)))
     ax.barh(miss_pct.index, miss_pct.values)
     ax.set_xlabel("% de valores perdidos")
@@ -166,7 +160,6 @@ def plot_missing_bar(df: pd.DataFrame, outfile: str) -> None:
 
 
 def _grid_size(k: int) -> tuple[int, int]:
-    """Calcula rejilla (filas, columnas) cuadrada aproximada."""
     if k <= 0:
         return (1, 1)
     cols = int(np.ceil(np.sqrt(k)))
@@ -186,7 +179,6 @@ def plot_histograms(df: pd.DataFrame, outdir: str, max_cols: int = 12) -> None:
         ax.hist(num[col].dropna(), bins=30)
         ax.set_title(col)
         ax.grid(True, linestyle="--", alpha=0.3)
-    # Apaga ejes sobrantes
     for ax in axes[len(cols):]:
         ax.axis("off")
     ensure_dir(outdir)
@@ -237,7 +229,7 @@ def plot_correlation(df: pd.DataFrame, outfile: str) -> None:
 
 
 # ---------------------------------------------------------------------
-# CLI (idéntico en espíritu al script de referencia)
+# CLI
 # ---------------------------------------------------------------------
 def parse_args() -> argparse.Namespace:
     ap = argparse.ArgumentParser(
@@ -271,6 +263,12 @@ def main() -> None:
     logger.info(f"Leyendo datos: {args.input}")
     df = read_any(args.input, sep=args.sep, sheet=sheet)
 
+    # 🔹 Limpieza de columnas Unnamed
+    if all(df.columns.str.contains("^Unnamed")):
+        logger.warning("Todas las columnas fueron 'Unnamed'. Revisa el header en read_excel.")
+    else:
+        df = df.loc[:, ~df.columns.str.contains("^Unnamed")]
+
     # Copia con nombres de columnas normalizados y muestra
     df_cols_norm = df.copy()
     df_cols_norm.columns = [str(c).strip().replace(" ", "_") for c in df.columns]
@@ -282,33 +280,36 @@ def main() -> None:
     logger.info(f"Primeras columnas: {ov['columns'][:5]}")
 
     # Diccionario de datos
-    dd = data_dictionary(df_cols_norm)
-    save_dictionary_csv(dd, "reports/data_dictionary.csv")
-    dd.to_csv("data/interim/_data_dictionary_debug.csv", index=False, encoding="utf-8")
+    if ov["cols"] > 0:
+        dd = data_dictionary(df_cols_norm)
+        save_dictionary_csv(dd, "reports/data_dictionary.csv")
+        dd.to_csv("data/interim/_data_dictionary_debug.csv", index=False, encoding="utf-8")
 
-    # Flags de calidad
-    flags = quality_flags(df_cols_norm, dd)
-    with open("reports/quality_flags.json", "w", encoding="utf-8") as f:
-        json.dump(flags, f, ensure_ascii=False, indent=2)
-    logger.info(f"Flags de calidad: {flags}")
+        # Flags de calidad
+        flags = quality_flags(df_cols_norm, dd)
+        with open("reports/quality_flags.json", "w", encoding="utf-8") as f:
+            json.dump(flags, f, ensure_ascii=False, indent=2)
+        logger.info(f"Flags de calidad: {flags}")
 
-    # Gráficos
-    logger.info("Generando gráficos...")
-    plot_missing_bar(df_cols_norm, "reports/figures/missing_bar.png")
-    plot_histograms(df_cols_norm, "reports/figures", max_cols=args.max_hist)
-    plot_boxplots(df_cols_norm, "reports/figures", max_cols=args.max_box)
-    plot_correlation(df_cols_norm, "reports/figures/corr_matrix.png")
+        # Gráficos
+        logger.info("Generando gráficos...")
+        plot_missing_bar(df_cols_norm, "reports/figures/missing_bar.png")
+        plot_histograms(df_cols_norm, "reports/figures", max_cols=args.max_hist)
+        plot_boxplots(df_cols_norm, "reports/figures", max_cols=args.max_box)
+        plot_correlation(df_cols_norm, "reports/figures/corr_matrix.png")
 
-    # Tablas de perfilado básico
-    num = df_cols_norm.select_dtypes(include=[np.number])
-    if num.shape[1] > 0:
-        num.describe().to_csv("reports/numeric_summary.csv", encoding="utf-8")
+        # Tablas de perfilado básico
+        num = df_cols_norm.select_dtypes(include=[np.number])
+        if num.shape[1] > 0:
+            num.describe().to_csv("reports/numeric_summary.csv", encoding="utf-8")
 
-    cat = df_cols_norm.select_dtypes(exclude=[np.number])
-    for c in cat.columns:
-        vc = cat[c].value_counts(dropna=False).head(20)
-        vc.to_csv(f"reports/{c}_top20_value_counts.csv", encoding="utf-8")
+        cat = df_cols_norm.select_dtypes(exclude=[np.number])
+        for c in cat.columns:
+            vc = cat[c].value_counts(dropna=False).head(20)
+            vc.to_csv(f"reports/{c}_top20_value_counts.csv", encoding="utf-8")
 
+    else:
+        logger.error("No se detectaron columnas válidas en el archivo. Revisa el Excel y el header.")
 
     logger.info("Listo. Revisa carpetas 'reports' y 'reports/figures'.")
 
