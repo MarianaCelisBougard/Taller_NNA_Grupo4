@@ -1,0 +1,101 @@
+Unnamed:_0,Unnamed:_1,Unnamed:_2,Unnamed:_3,Unnamed:_4,Unnamed:_5
+,Variable,Cantidad de opciones,Opciones (hasta 10),Status,Observaciones
+,Id_fic,1000,Identificadores únicos,OK,
+,Base_Origen,5,"dic24_mar25, MARZO2023_NOVI 2024, sep09_2022_mar2023, nov21_sep08_2022, marzo_octubre 2021",OK,
+,Ficha_fic,1000,Identificadores únicos,OK,
+,Fecha_intervencion,31,2021 - 2025,OK,
+,Localidad_fic,17,nombres localidades,OK,
+,Red_fic,4,"Sur, Centro Oriente, Suroccidente, Norte,1,2,3,4",Pendiente,por favor indicar que subred es cada número
+,Usuario,29,Identificadores únicos,OK,
+,TIPO_INTERVENCION,1,9999/NIÑOS NIÑAS/ADOLESCENTES/SEGUIMIENTO AL EFECTO,Pendiente,"El 85% está vacío, ¿se usara para algún análisis?"
+,PERFIL,2,"Tecnólogo en Salud Ocupacional, Trabajador social, 9999",Pendiente,"El 96% está vacío, ¿se usara para algún análisis?"
+,TIPO INTERVENCIÓN,3,"2. Niños - Niñas, 3. Adolescentes, 5. Seguimiento al efecto, 99999",Pendiente,"solo el 14% esta vacío, indicar si se debe hacer analisis por cada grupo"
+,.INFORMACIÓN DEL MENOR.,1,"99999, solo numéric",,"El 86% está vacío, ¿se usara para algún análisis?"
+,Sub-Sección => INFORMACIÓN DEL MENOR NNA IDENTIFICADO COMO TRABAJADOR,1,99999,Pendiente,"vacia, se quita del análisis"
+,TIPO DE DOCUMENTO,6,"2- RC, 3- TI, 8- Menor sin ID., 13- PPT Permiso por Protección Temporal, 12- Documento Nacional de Identidad (del país de origen), 4- CE",Pendiente,¿se usara para el análisis?
+,NÚMERO DOCUMENTO,1000,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,1ER. NOMBRE,530,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,2DO. NOMBRE,280,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,1ER. APELLIDO,448,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,2DO. APELLIDO,393,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,Nombre y apellido  Completo,,Identificadores únicos,Pendiente,¿se usara para el análisis?
+,NACIONALIDAD,17,"Colombia, Venezuela (Bolivarian Republic of), Brazil",Pendiente,¿se usara para el análisis?
+,SEXO,2,"1- Hombre, 2- Mujer, 3- intersexual, 99999",Pendiente,"el 20% esta vacio, indicar con que otras variables se quisiera ver"
+,GENERO,2,"1- Hombre, 2- Mujer, 3- intersexual, 99999",Pendiente,"el 20% esta vacio, indicar con que otras variables se quisiera ver"
+,ESTADO CIVIL,3,"6- No aplica, 1- Soltero(a), 5- Unión Libre",Pendiente,¿se usara para el análisis?
+,FECHA DE NACIMIENTO,917,2000-2025,Pendiente,"el 20% esta vacio, indicar con que otras variables se quisiera ver"
+,EDAD,1,numerica,Pendiente,"esta variable aunque es clave tiene un 43% de vacios, se quisiera mirar por tipo de intervención? O con que cruces podría ser interesante"
+,CURSO DE VIDA,1,"adolescencia, primera infancia, infancia, 9999",Pendiente,tambien tiene un 43% de vacíos
+,ETNIA,3,"6- Ninguno, 5- Afrocolombian/Afrodescendiente, 1- Indígena",Pendiente,se quiere revisar tipo de intervención por cada etnia?
+,POBLACIÓN DIFERENCIAL Y DE INCLUSIÓN,12,"14- No Aplica, 13- Migrante, 2- Discapacidad, 1- Víctima del conflicto armado",Pendiente,se quiere revisar tipo de intervención por cada población?
+,.Personas a Cargo.,1,99999,Pendiente,el 85% no aplica
+,OCUPACIÓN,5,"11- Ninguno, 3- Estudiante, 2- Trabajo informal, 19-En acompañamiento laboral, 4- Oficios del hogar",Pendiente,"el 43% vacio, se desea alguna revisión?"
+,IdNivelEducativo,1,99999,Pendiente,"el 90% esta vacío, si se desea algún subgrupo"
+,RazonAbandonoEscolar,1,99999,Pendiente,"vacia, se quita del análisis"
+,CATEGORÍAS DE LA DISCAPACIDAD,5,"No aplica, 5- Discapacidad Cognitiva, Discapacidad Física, 3- Discapacidad Visual, 6- Discapacidad Multiple",Pendiente,se quiere revisar tipo de intervención por cada categoria?
+,HABLA ESPAÑOL,2,"99999, Si",Pendiente,¿se usara para el análisis?
+,PUEBLO,3,"99999, Inga, Muisca",Pendiente,se quiere revisar tipo de intervención por cada pueblo?
+,VÍNCULO CON EL JEFE DE HOGAR,8,"Hijo(a), 5- Nieto(a), Familia, Otro pariente, 8- Hermano(a), 4- Hijastro(a), No parientes, Cónyuge",Pendiente,"esta es interesante? Si si, definir agrupaciones como nucleo primario o si se requiere en la granularidad actual"
+,AFILIACIÓN AL SGSSS,4,"1- Subsidiado, 5- No asegurado, 2- Contributivo, 3- Régimen de excepción/especial",Pendiente,"el 14% vacio, se piensa usar en algun analisis?"
+,NOMBRE EAPB,42,"Tecnólogo en Salud Ocupacional, Trabajador social, 9999",OK,
+,DIRECCIÓN DE LA VIVIENDA,1,99999,Pendiente,"vacia, se quita del análisis"
+,ZONA,1,1- Urbana,Pendiente,¿se usara para el análisis?
+,ESPECIAL,1,99999,Pendiente,¿se usara para el análisis?
+,LOCALIDAD,20,"19- Ciudad Bolivar, 6- Tunjuelito, 15- Antonio Nariño, 3- Santa Fe, 2- Chapinero, 17- La Candelaria, 4- San Cristóbal, 14- Los Mártires, 5- Usme, 16- Puente Aranda",Pendiente,SE DEBE POR FAVOR ORIENTAR SI ESTA ES LA QUE SE DEBE TOMAR O LA ANTERIOR
+,UPZ/UPR,60,"67, 42, 66, 35, 38, 95, 90, 94, 68, 34",Pendiente,DECIDIR SI SE PODRIA USAR ESTA GRANULARIDAD O BARRIAL
+,BARRIO,245,"EL LUCERO, SAMORE, ALTOS DE JALISCO, EL CARMEN, SAN VICENTE FERRER, CANDELARIA LA NUEVA, POLICARPA SALAVARRIETA, SANTANDER, SAN BERNARDO, SAN MARTIN DE PORRES",Pendiente,ESTA SE TOMARIA PARA EL MAPA DE DESPLAZAMIENTOS
+,BARRIO PRIORIZADO,2,"Si, No",Pendiente,¿se usara para el análisis?
+,MANZANA DEL CUIDADO,3,"No, Si, 99999",Pendiente,¿se usara para el análisis?
+,NUMERO DE MANZANA DEL CUIDADO,6,"99999, Zona Centro, Los Mártires, San Cristóbal - Juan Rey, Kennedy - Bella Vista, Usaquén",Pendiente,"vacia, se quita del análisis"
+,EJE PRINCIPAL,5,"Diagonal, Calle, Transversal, Carrera, Avenida Calle",,esto debe revisarlo los SIG y confirmarnos cual es la dir para geocodificar
+,NUMERO,126,"64, 51, 17, 52, 27, 49, 55, 2, 1, 28",,
+,LETRA,16,"A, 99999, B, C, F, D, Z, G, M, H",,
+,BIS,2,"BIS, 99999",,
+,LETRA.1,3,"99999, A, B",,
+,CUADRANTE 1,3,"Sur, 99999, Este",,
+,EJE GENERADOR,1,99999,,
+,NÚMERO,119,"17, 31, 64, 29, 49, 0, 27, 59, 11, 2",,
+,LETRA.2,17,"G, 99999, A, B, D, C, R, F, L, M",,
+,BIS.1,2,"99999, BIS",,
+,LETRA.3,1,99999,,
+,PLACA,95,"21, 81, 31, 93, 5, 0, 62, 49, 77, 61",,
+,CUADRANTE 2,3,"99999, Sur, Este",,
+,COMPLEMENTO 1,8,"99999, Piso, Manzana, Casa, Interior, Torre, Local, Apartamento",,
+,NÚMERO.1,11,"99999, 1, 6, 2, 18, 24, 4, 3, 7, 9",,
+,COMPLEMENTO 2,5,"99999, Casa, Manzana, Apartamento, Torre",,
+,NÚMERO.2,6,"99999, 27, 15, 30, 23, 202",,
+,COORDENADAS X,1,99999,Pendiente,para completar de parte de los SIG
+,COORDENADAS Y,1,99999,Pendiente,para completar de parte de los SIG
+,ESTRATO,3,"2. Bajo, 1. Bajo-bajo, 3. Medio-bajo",pendiente,"estas variables se preguntan en la parte superior, es importante definir o contextualizar si la primera información es del acudiente y esta es del niño/a y como se esperaria el analisis"
+,SUBGRUPO SISBEN,4,"99999, B1 - B7, C1 - C18, A1 - A5",,
+,TELÉFONO 1,638,"3223185759, 3143261254, 3216122022, 3123104339, 3028664374, 3219327178, 3103354734, 3232071588, 3202885286, 3222888431",,
+,TELÉFONO 2,75,"3044500225, 99999, 3042997649, 3204428532, 3115259014, 3146414506, 3212778717, 3212902236, 3143341284, 3124322620",,
+,VEREDA,1,99999,,
+,CORREO  1,66,"SUBREDSUR@GMAIL.COM, 99999, subredsur@gmail.com, ENTORNOLABORALRS02@GMAIL.COM, ENTORNOLABORALS02@GMAIL.COM, ENTORNOLABORALRS02, ENTORNOLABORALR502@GMAIL.COM, NADIAM20241@GMAIL.COM, ENTORNOLABORALRSO@GMAIL.COM, ENTORNOLABORALRSO2@GMAIL.COM",,
+,CORREO  2,1,99999,,
+,ÚLTIMA INTERVENCIÓN,1,99999,,
+,FECHA DE LA ÚLTIMA INTERVENCIÓN,59,"99999, 2023-05-15 00:00:00, 2023-06-05 00:00:00, 2023-04-14 00:00:00, 2023-04-13 00:00:00, 2023-04-04 00:00:00, 2023-08-01 00:00:00, 2023-08-03 00:00:00, 2023-08-04 00:00:00, 2023-04-05 00:00:00",,
+,NÚMERO DE FICHA ANTERIOR,204,"99999, 3190236049, 3190236050, 3190236048, 3190236083, 3190236223, 3190236221, 3190236220, 3190236222, 3050235742",,
+,Sub-Sección => INFORMACIÓN DEL ACUDIENTE,1,99999,,
+,1ER. NOMBRE.1,370,"FRANYERIS, KATERIN, ERIKA, LIGIA, MARITZA, YEIMI, LAURA, ADRIANA, SIRYURLEY, DAYANA",,
+,2DO. NOMBRE.1,231,"99999, DAYANA, NAYIBE, MARGARITA, PAOLA, SOFIA, YASMIN, CAMILO, DE JESUS, MARINA",,
+,1ER. APELLIDO.1,352,"SULBARAN, DE LA TORRE, PULIDO, UGUETO, BECERRA, VEGA, MUÑOZ, RODRIGUEZ, USECHE, VALDERRAMA",,
+,2DO. APELLIDO.1,324,"99999, LOPEZ, PEÑA, MORENO, RODRIGUEZ, GALINDO, RUIZ, ORTEGA, ORTIZ, CARDONA",,
+,TIPO DE DOCUMENTO.1,6,"7- Adulto sin ID., 1- CC, 13- PPT Permiso por Protección Temporal, 12- Documento Nacional de Identidad (del país de origen), 4- CE, 3- TI",,
+,NÚMERO DOCUMENTO.1,633,"1967FS0001, 1024583013, 1052407190, 1967LU0001, 53077041, 1031149454, 1073706290, 1031123209, 5658101, 1013631727",,
+,NACIONALIDAD.1,2,"Venezuela (Bolivarian Republic of), Colombia",,
+,SEXO.1,2,"2- Mujer, 1- Hombre",,
+,ETNIA.1,4,"6- Ninguno, 2- ROM-Gitano, 5- Afrocolombian/Afrodescendiente, 1- Indígena",,
+,POBLACIÓN DE INCLUSIÓN POR OFICIO,4,"99999, 2- Vendedor ambulante, 1- Reciclador, 7- Servicio doméstico",,
+,AFILIACIÓN AL SGSSS.1,4,"5- No asegurado, 1- Subsidiado, 2- Contributivo, 3- Régimen de excepción/especial",,
+,NOMBRE EAPB.1,33,"NO ASEGURADO, CAPITAL SALUD, NUEVA EPS, COMPENSAR, SALUD TOTAL, SANITAS, FAMISANAR, 99999, CAJACOPI, SURA",,
+,ESTRATO SOCIOECONÓMICO,3,"2. Bajo, 1. Bajo-bajo, 3. Medio-bajo",,
+,TELÉFONO 1.1,632,"3223185759, 3143261254, 3216122022, 3123104339, 3028664374, 3219327178, 3103354734, 3232071588, 3202885286, 3222888431",,
+,TELÉFONO 2.1,60,"99999, 3042997649, 3204428532, 3115259014, 3146414506, 3212778717, 3212902236, 3143341284, 3124322620, 3203425762",,
+,Sub-Sección => INFORMACIÓN LABORAL,1,99999,,
+,DIRECCIÓN DEL TRABAJO,1,99999,,
+,ZONA.1,2,"1- Urbana, 99999",,
+,ESPECIAL.1,1,99999,,
+,LOCALIDAD.1,18,"19- Ciudad Bolivar, 6- Tunjuelito, 15- Antonio Nariño, 17- La Candelaria, 3- Santa Fe, 14- Los Mártires, 99999, 5- Usme, 7- Bosa, 8- Kennedy",,
+,UPZ/UPR.1,45,"67, 42, 38, 35, 94, 93, 102, 69, 99999, 70",,
+,BARRIO.1,159,"EL LUCERO, FATIMA, ALTOS DE JALISCO, EL CARMEN, SAMORE, LA FRAGUA, POLICARPA SALAVARRIETA, SANTANDER, CENTRO ADMINISTRATIVO, BELEN",,

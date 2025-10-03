@@ -1,0 +1,15 @@
+{
+  "rows": 174,
+  "high_missing_cols": [
+    "Unnamed:_0",
+    "Unnamed:_4",
+    "Unnamed:_5"
+  ],
+  "constant_cols": [
+    "Unnamed:_0"
+  ],
+  "suspected_id_like": [
+    "Unnamed:_1"
+  ],
+  "duplicate_rows": 0
+}
