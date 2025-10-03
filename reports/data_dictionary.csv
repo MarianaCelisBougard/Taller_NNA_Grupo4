@@ -1,7 +1,7 @@
-column,dtype,non_null,nunique,missing,missing_pct,sample,min,max,mean
-Unnamed:_0,float64,0,0,174,100.0,,,,
-Unnamed:_1,object,174,174,0,0.0,Variable | Id_fic | Base_Origen,,,
-Unnamed:_2,object,173,60,1,0.57,Cantidad de opciones | 1000 | 5,,,
-Unnamed:_3,object,174,120,0,0.0,"Opciones (hasta 10) | Identificadores únicos | dic24_mar25, MARZO2023_NOVI 2024, sep09_2022_mar2023, nov21_sep08_2022, marzo_octubre 2021",,,
-Unnamed:_4,object,55,4,119,68.39,Status | OK | OK,,,
-Unnamed:_5,object,53,30,121,69.54,"Observaciones | por favor indicar que subred es cada número | El 85% está vacío, ¿se usara para algún análisis?",,,
+column,dtype,non_null,nulls,null_pct,n_unique
+Unnamed:_0,float64,0,174,100.0,0
+Unnamed:_1,object,174,0,0.0,172
+Unnamed:_2,object,174,0,0.0,61
+Unnamed:_3,object,174,0,0.0,120
+Unnamed:_4,object,174,0,0.0,5
+Unnamed:_5,object,174,0,0.0,31
