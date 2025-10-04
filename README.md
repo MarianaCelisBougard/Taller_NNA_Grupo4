@@ -10,7 +10,7 @@ La base permite identificar patrones relacionados con escolaridad, salud, nutric
 
 * **Recursos disponibles**: Base de datos consolidada en formato `.xlsx` con variables cuantitativas y cualitativas; script en Python (`data_NNA.py`) para análisis exploratorio.
 * **Supuestos**: Los datos fueron recolectados de manera estandarizada en campo; pueden existir valores faltantes o inconsistencias.
-* **Limitaciones**: No todas las variables están completas; algunas categorías presentan alta cardinalidad y existen columnas sensibles que requieren anonimización.
+* **Limitaciones**: No todas las variables están completas; algunas categorías presentan alta cardinalidad
 * **Beneficio esperado**: Facilitar la toma de decisiones de políticas públicas sobre niñez y adolescencia en situación de riesgo, con base en evidencia empírica.
 
 ### Metas de Minería de Datos
