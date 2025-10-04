@@ -5,8 +5,6 @@
 
 **Desarrollar un proceso integral de análisis y modelado de datos, basado en la metodología CRISP-DM, que permita caracterizar, identificar y predecir factores de riesgo asociados al trabajo infantil en niños, niñas y adolescentes (NNA) en situación de vulnerabilidad, asegurando un recall mínimo de 0.75 en los modelos de clasificación y generando reportes comprensibles para tomadores de decisiones en un plazo de 6 meses.**
 
-*(SMART: Específico = análisis y predicción de riesgo; Medible = recall ≥0.75, reportes generados; Alcanzable = con la base existente y el script; Relevante = apoya decisiones en política pública; Tiempo = 6 meses)*
-
 ---
 
 # Objetivos Específicos
