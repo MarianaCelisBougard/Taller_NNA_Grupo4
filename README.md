@@ -4,8 +4,7 @@
 ### Objetivos del Negocio
 
 El propósito del proyecto es **comprender las condiciones de vida y vulnerabilidad de NNA entre 0 y 18 años**, con especial énfasis en el **riesgo de trabajo infantil**.
-La base permite identificar patrones relacionados con escolaridad, salud, nutrición y entorno familiar, y a partir de ello **aportar insumos para programas de protección y atención integral**.
-
+La base permite identificar patrones relacionados con escolaridad, salud, nutrición y entorno familiar
 ### Situación Actual
 
 * **Recursos disponibles**: Base de datos consolidada en formato `.xlsx` con variables cuantitativas y cualitativas; script en Python (`data_NNA.py`) para análisis exploratorio.
