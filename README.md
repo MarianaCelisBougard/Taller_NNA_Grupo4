@@ -33,7 +33,6 @@ La base permite identificar patrones relacionados con escolaridad, salud, nutric
 
 * **Columnas numéricas**: Edad, número de personas en el hogar, tiempos y costos de traslado, entre otros.
 * **Columnas categóricas**: Nivel educativo, ocupación, estado civil de los cuidadores, tipo de zona de residencia, satisfacción con la atención recibida, etc.
-* **Variables sensibles**: Datos de identificación y texto libre fueron eliminados o anonimizados mediante hashing o reemplazo de PII.
 
 ### Exploración de Datos
 
