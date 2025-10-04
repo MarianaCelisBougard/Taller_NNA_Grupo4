@@ -122,12 +122,7 @@ El script `data_NNA.py` produjo:
 ## 6. Deployment
 
 * **Plan de Despliegue**
-  Implementar el modelo en un entorno controlado (ej. dashboard en Power BI o aplicación web).
-
-* **Plan de Monitoreo y Mantenimiento**
-
-  * Actualización periódica de la base con nuevos registros.
-  * Reevaluación del modelo cada 6 meses.
+  Implementar el modelo en un entorno controlado.
 
 * **Reporte Final**
   Generar documentos y presentaciones para tomadores de decisiones con visualizaciones y recomendaciones.
