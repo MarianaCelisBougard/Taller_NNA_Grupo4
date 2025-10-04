@@ -147,7 +147,7 @@ El script `data_NNA.py` produjo:
    Obtener tipologías de NNA (por edad, región, nivel educativo, condiciones socioeconómicas) que ayuden a enfocar políticas públicas y programas de intervención.
 
 3. **Información clara para la toma de decisiones**
-   Entregar reportes y visualizaciones que sean comprensibles para entidades responsables (ICBF, alcaldías, ONGs), y que permitan tomar decisiones rápidas.
+   Entregar reportes y visualizaciones que sean comprensibles para el lector o interesado, y que permitan tomar decisiones rápidas.
 
 4. **Apoyo a programas de protección**
    Que los resultados sirvan para evaluar la efectividad de programas actuales y detectar brechas en la cobertura de servicios.
