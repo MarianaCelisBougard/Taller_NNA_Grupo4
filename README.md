@@ -20,14 +20,6 @@ La base permite identificar patrones relacionados con escolaridad, salud, nutric
 * Explorar **relaciones entre variables** (ej. municipio × punto de atención, motivo de gestión × servicio recibido).
 * Producir **visualizaciones claras** que apoyen la comunicación de hallazgos.
 
-### Plan de Proyecto
-
-El plan contempla:
-
-1. Análisis exploratorio y descriptivo (fase actual).
-2. Preparación de datos para futuros modelos predictivos (fase siguiente).
-3. Validación y generación de reportes de resultados para tomadores de decisión.
-
 ---
 
 # Data Understanding
@@ -65,6 +57,85 @@ El script `data_NNA.py` produjo:
 * Existen registros duplicados en pequeña proporción.
 * Se identificaron columnas candidatas a ser IDs únicos, útiles para seguimiento.
 
+
+# Continuacion Plan del Proyecto (CRISP-DM)
+
+
+## 3. Data Preparation
+
+* **Selección de Datos**
+  Conservar variables relevantes para caracterización (edad, escolaridad, zona de residencia, ocupación, salud, nutrición). Excluir columnas altamente sensibles o redundantes.
+
+* **Limpieza de Datos**
+
+  * Manejo de nulos (imputación o eliminación).
+  * Homogeneización de categorías.
+  * Eliminación de duplicados.
+  * Anonimización aplicada (hash en campos sensibles).
+
+* **Construcción de Datos**
+  Crear atributos derivados como:
+
+  * Índices de vulnerabilidad (combinando variables de educación, nutrición y zona).
+  * Variables binarias (ej. riesgo escolar = sí/no).
+
+* **Integración de Datos**
+  Si existen múltiples bases, consolidarlas en un dataset unificado.
+
+* **Formato de Datos**
+  Preparar datasets balanceados y listos para modelado, con variables codificadas (one-hot encoding) para categóricas.
+
+---
+
+## 4. Modeling
+
+* **Selección de Técnicas**
+
+  * Modelos de clasificación supervisada (árboles de decisión, random forest, regresión logística) para identificar NNA en riesgo.
+  * Clustering (k-means, clustering jerárquico) para agrupar perfiles de vulnerabilidad.
+
+* **Generación de Diseño de Pruebas**
+  Dividir dataset en entrenamiento (70%) y prueba (30%). Validación cruzada para asegurar robustez.
+
+* **Construcción del Modelo**
+  Entrenar modelos con parámetros iniciales y ajustar hiperparámetros.
+
+* **Evaluación del Modelo**
+  Medir desempeño con métricas: accuracy, recall, precision y AUC, priorizando sensibilidad (identificación de casos de riesgo).
+
+---
+
+## 5. Evaluation
+
+* **Evaluación de Resultados**
+  Validar que los hallazgos se alineen con los objetivos de negocio: identificación clara de factores de riesgo en NNA.
+
+* **Revisión del Proceso**
+  Confirmar que el pipeline desde la limpieza hasta el modelado es reproducible y documentado.
+
+* **Determinación de Próximos Pasos**
+
+  * Adoptar modelos que mejor predigan vulnerabilidad.
+  * Preparar reportes comprensibles para actores institucionales.
+  * Diseñar un piloto de implementación en campo.
+
+---
+
+## 6. Deployment
+
+* **Plan de Despliegue**
+  Implementar el modelo en un entorno controlado (ej. dashboard en Power BI o aplicación web).
+
+* **Plan de Monitoreo y Mantenimiento**
+
+  * Actualización periódica de la base con nuevos registros.
+  * Reevaluación del modelo cada 6 meses.
+
+* **Reporte Final**
+  Generar documentos y presentaciones para tomadores de decisiones con visualizaciones y recomendaciones.
+
+* **Revisión del Proyecto**
+  Documentar la experiencia, limitaciones y oportunidades de mejora, dejando lineamientos para próximas fases.
 
 
 Medical References:
