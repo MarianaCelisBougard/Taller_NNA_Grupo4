@@ -138,5 +138,40 @@ El script `data_NNA.py` produjo:
   Documentar la experiencia, limitaciones y oportunidades de mejora, dejando lineamientos para próximas fases.
 
 
-Medical References:
-1. None — DOI: file-DwHjtodAH5LMWABzQWmkri
+## Criterios de Éxito de Negocio
+
+1. **Identificación de factores de riesgo**
+   Poder señalar con claridad qué variables (ej. escolaridad, nutrición, zona de residencia, entorno familiar) se relacionan más con la vulnerabilidad y riesgo de trabajo infantil.
+
+2. **Generación de perfiles poblacionales**
+   Obtener tipologías de NNA (por edad, región, nivel educativo, condiciones socioeconómicas) que ayuden a enfocar políticas públicas y programas de intervención.
+
+3. **Información clara para la toma de decisiones**
+   Entregar reportes y visualizaciones que sean comprensibles para entidades responsables (ICBF, alcaldías, ONGs), y que permitan tomar decisiones rápidas.
+
+4. **Apoyo a programas de protección**
+   Que los resultados sirvan para evaluar la efectividad de programas actuales y detectar brechas en la cobertura de servicios.
+
+---
+
+## Criterios de Éxito Técnicos
+
+1. **Calidad de Datos Mejorada**
+   Reducción de nulos, duplicados y errores categóricos a un nivel aceptable (<5% en variables clave).
+
+2. **Exploración Completa Documentada**
+   Generación automática de:
+
+   * Diccionario de datos (`data_dictionary.csv`).
+   * Reporte de calidad (`quality_flags.json`).
+   * Visualizaciones de distribución y cruces relevantes.
+
+3. **Modelos con desempeño adecuado** (en fase de modelado)
+
+   * Clasificación: métricas mínimas de **recall > 0.75** para detectar correctamente casos en riesgo.
+   * Clustering: obtención de grupos interpretables y validados por expertos del dominio.
+
+4. **Reproducibilidad**
+   Que el pipeline (`data_NNA.py` + futuras fases) se ejecute de forma automática sobre nuevas versiones de la base, garantizando resultados consistentes.
+
+-
