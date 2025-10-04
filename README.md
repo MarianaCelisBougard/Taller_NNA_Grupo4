@@ -1,18 +1,49 @@
 
 # Business Understanding
 
-### Objetivos del Negocio
+# Objetivo General
 
-El propósito del proyecto es **comprender las condiciones de vida y vulnerabilidad de NNA entre 0 y 18 años**, con especial énfasis en el **riesgo de trabajo infantil**.
-La base permite identificar patrones relacionados con escolaridad, salud, nutrición y entorno familiar
-### Situación Actual
+**Desarrollar un proceso integral de análisis y modelado de datos, basado en la metodología CRISP-DM, que permita caracterizar, identificar y predecir factores de riesgo asociados al trabajo infantil en niños, niñas y adolescentes (NNA) en situación de vulnerabilidad, asegurando un recall mínimo de 0.75 en los modelos de clasificación y generando reportes comprensibles para tomadores de decisiones en un plazo de 6 meses.**
 
-* **Recursos disponibles**: Base de datos consolidada en formato `.xlsx` con variables cuantitativas y cualitativas; script en Python (`data_NNA.py`) para análisis exploratorio.
-* **Supuestos**: Los datos fueron recolectados de manera estandarizada en campo; pueden existir valores faltantes o inconsistencias.
-* **Limitaciones**: No todas las variables están completas; algunas categorías presentan alta cardinalidad
-* **Beneficio esperado**: Facilitar la toma de decisiones de políticas públicas sobre niñez y adolescencia en situación de riesgo, con base en evidencia empírica.
+*(SMART: Específico = análisis y predicción de riesgo; Medible = recall ≥0.75, reportes generados; Alcanzable = con la base existente y el script; Relevante = apoya decisiones en política pública; Tiempo = 6 meses)*
 
-### Metas de Minería de Datos
+---
+
+# Objetivos Específicos
+
+1. **Evaluar y mejorar la calidad de los datos**
+
+   * **S**: Detectar y corregir valores faltantes, duplicados y columnas casi constantes en la base de datos NNA.
+   * **M**: Reducir inconsistencias a menos del 5% en variables clave.
+   * **A**: Utilizando el script `data_NNA.py` y técnicas de limpieza.
+   * **R**: Garantiza la fiabilidad de los análisis posteriores.
+   * **T**: En las primeras 4 semanas del proyecto.
+
+2. **Generar un perfil descriptivo de la población NNA**
+
+   * **S**: Elaborar reportes exploratorios con histogramas, cruces de variables y diccionario de datos.
+   * **M**: Producir al menos 1 diccionario de datos y 10 visualizaciones clave.
+   * **A**: A través de análisis descriptivo y reportes automáticos.
+   * **R**: Facilita la comprensión de patrones poblacionales.
+   * **T**: Durante las primeras 8 semanas del proyecto.
+
+3. **Construir modelos predictivos para la identificación de NNA en riesgo**
+
+   * **S**: Entrenar y validar modelos supervisados de clasificación (árboles, random forest, regresión logística).
+   * **M**: Alcanzar un **recall ≥0.75** en el set de prueba.
+   * **A**: Mediante técnicas estándar de aprendizaje automático con división 70/30 y validación cruzada.
+   * **R**: Asegura que los casos de riesgo no sean ignorados.
+   * **T**: Entre las semanas 9 y 18 del proyecto.
+
+4. **Comunicar resultados a tomadores de decisión**
+
+   * **S**: Elaborar reportes y presentaciones con resultados y recomendaciones.
+   * **M**: Generar un informe final y al menos una presentación ejecutiva.
+   * **A**: Utilizando herramientas de visualización (Power BI, matplotlib, dashboards).
+   * **R**: Proporciona insumos claros para la formulación de políticas públicas.
+   * **T**: En las semanas 19 a 24 del proyecto.
+
+### Metas de Minería de Datos para BU
 
 * Generar un **perfil descriptivo** de la población encuestada.
 * Identificar **variables críticas** (educación, salud, nutrición, entorno socioeconómico).
