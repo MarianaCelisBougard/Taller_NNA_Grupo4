@@ -1,142 +1,276 @@
+# Caracterización de NNA en Programas de Intervención en Trabajo Infantil - Grupo 4
 
-## 1. Comprensión del Negocio (Business Understanding)
+## Estudiantes: Mariana Celis & Yuneidy Gutierrez
 
-### Contexto general
-El conjunto de datos corresponde a registros administrativos de atención a **niños, niñas y adolescentes (NNA)** en procesos de **prevención y erradicación del trabajo infantil**.  
-El propósito institucional de estos registros es comprender los patrones y características de la población atendida, con el fin de orientar decisiones sobre **focalización, seguimiento y evaluación de resultados**.
-
-Desde un enfoque estadístico, el proyecto busca **caracterizar e identificar grupos homogéneos** dentro de la base de datos a partir de variables sociodemográficas, territoriales y de intervención, utilizando **técnicas exploratorias y de clustering no supervisado**.
+## CRISP-DM Fase 1: Business Understanding
 
 ---
 
-### Propósito analítico
-Desarrollar un proceso de análisis estadístico siguiendo la metodología **CRISP-DM**, que permita:
-- Evaluar la **calidad, estructura y completitud** de la información.
-- Aplicar **técnicas de reducción de dimensionalidad (MCA)** y **agrupamiento (clustering)**.
-- Generar **perfiles interpretables de NNA** con características similares según los registros institucionales.
+## Tabla de Contenidos
+
+- [Descripción del Proyecto](#descripción-del-proyecto)
+- [Problema y Contexto](#problema-y-contexto)
+- [Objetivos](#objetivos)
+- [Metodología](#metodología)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Resultados Esperados](#resultados-esperados)
+- [Cronograma](#cronograma)
+- [Equipo y Stakeholders](#equipo-y-stakeholders)
 
 ---
 
-### Alcance técnico
-- El estudio se centra exclusivamente en la base anónima proporcionada (`BD` del archivo `base_datos_completa_NNA_TI_anon.xlsx`).
-- Se abordará un **enfoque exploratorio y descriptivo**, no predictivo.
-- Las conclusiones se enfocan en **patrones estadísticos**, evitando interpretaciones causales o personales.
-- Se prioriza la **reproducibilidad del análisis** en Python mediante notebooks documentados.
+## Descripción del Proyecto
+
+Este proyecto aplica la metodología **CRISP-DM** (Cross Industry Standard Process for Data Mining) para caracterizar y segmentar una población de 56,473 Niños, Niñas y Adolescentes (NNA) en situación de trabajo infantil, atendidos a través de programas de intervención social en Colombia durante el período 2015-2025.
+
+El objetivo es identificar perfiles homogéneos de NNA que permitan mejorar la focalización de intervenciones, evaluar impacto diferenciado por grupo y optimizar la asignación de recursos.
 
 ---
 
-### Relevancia técnica
-El enfoque de **clustering** permite:
-- Agrupar individuos con características semejantes.
-- Resumir la información en un número reducido de **perfiles representativos**.
-- Detectar patrones de atención y diferencias territoriales.
-- Brindar una herramienta analítica reproducible para el estudio institucional de datos sociales.
+## Problema y Contexto
+
+### Problemática Identificada
+
+La organización cuenta con un sistema de información extenso (56,473 registros), pero enfrenta desafíos críticos:
+
+- **Falta de caracterización sistemática**: No existe clasificación unificada de los diferentes tipos de NNA según sus características demográficas, socioeconómicas y de proceso de intervención.
+
+- **Calidad de datos inconsistente**: Completitud variable entre variables (rango 0-100%), con 35.5% de casos presentando registro administrativo incompleto.
+
+- **Ausencia de segmentación**: No se conoce la heterogeneidad dentro de la población, limitando intervenciones personalizadas.
+
+- **Débil evaluación de impacto**: Sin perfiles claros, no se puede evaluar efectividad diferenciada.
+
+- **Ineficiencia operacional**: Asignación de recursos sin considerar vulnerabilidad o riesgo de abandono.
+
+### Pregunta Central de Investigación
+
+¿Existen perfiles homogéneos diferenciados de NNA que permitan mejorar la comprensión de la población, identificar grupos prioritarios y diseñar intervenciones más efectivas?
 
 ---
 
-## Objetivos del Proyecto
+## Objetivos
 
 ### Objetivo General
-Identificar y describir **grupos homogéneos de niños, niñas y adolescentes (NNA)** registrados en los programas de intervención frente al trabajo infantil, mediante técnicas de **análisis exploratorio y clustering no supervisado**, siguiendo la metodología **CRISP-DM**, con el fin de aportar una caracterización técnica que apoye la comprensión de los datos institucionales.
 
----
+Caracterizar y segmentar la población de NNA mediante análisis multivariado para identificar perfiles que permitan mejorar la efectividad y focalización de intervenciones.
 
 ### Objetivos Específicos
 
-1. **Comprensión y evaluación de la base de datos:**  
-   Analizar la estructura, variables y calidad de los registros, identificando valores faltantes, inconsistencias y patrones de diligenciamiento (por ejemplo, el uso de códigos 99999).
-
-2. **Preparación y depuración de datos:**  
-   Seleccionar, transformar, codificar y estandarizar las variables relevantes para asegurar su idoneidad en el proceso de clustering.
-
-3. **Aplicación de técnicas estadísticas:**  
-   Implementar reducción de dimensionalidad (**PCA**) y **análisis de agrupamiento** (K-Means y/o jerárquico) para descubrir grupos representativos dentro de la población analizada.
-
-4. **Interpretación y análisis de resultados:**  
-   Describir los clusters identificados mediante estadísticas descriptivas y visualizaciones, destacando las principales características de cada grupo.
-
-5. **Conclusiones técnicas:**  
-   Elaborar un informe con los hallazgos y recomendaciones orientadas a la mejora de la calidad del registro y a futuras aplicaciones analíticas dentro del contexto institucional.
+1. Explorar la estructura, calidad y limitaciones de los datos disponibles
+2. Preparar y transformar datos para análisis multivariado asegurando consistencia
+3. Identificar perfiles distintos mediante Análisis de Correspondencias Múltiples (MCA) y clustering
+4. Interpretar y validar perfiles con características significativas
+5. Generar recomendaciones estratégicas específicas por perfil
+6. Establecer sistema de monitoreo continuo con KPIs
 
 ---
 
-## 2. Comprensión de los Datos (Data Understanding)
+## Metodología
 
-### Fuente de datos
-El análisis se desarrolla a partir del archivo **`base_datos_completa_NNA_TI_anon.xlsx`**, el cual contiene dos hojas principales:
+### CRISP-DM: 6 Fases
 
-- **`variables`** → Diccionario con los nombres, descripción y codificación de las variables disponibles.  
-- **`BD`** → Base de datos principal con los registros de niños, niñas y adolescentes vinculados a programas de intervención.
+| Fase | Descripción | Entregable |
+|------|-------------|-----------|
+| **1. Business Understanding** | Definición de objetivos, problemas y oportunidades | Documento de contexto |
+| **2. Data Understanding** | Exploración, análisis de calidad y estructura | Reporte EDA |
+| **3. Data Preparation** | Limpieza, transformación y preparación | Dataset preparado |
+| **4. Modeling** | MCA y clustering para identificar perfiles | 4 perfiles definidos |
+| **5. Evaluation** | Validación, interpretación y recomendaciones | Reporte de hallazgos |
+| **6. Deployment** | Implementación, monitoreo y sostenibilidad | Plan de acción |
 
----
+### Técnicas Utilizadas
 
-### Descripción inicial
-La base cuenta con **más de 56.000 registros** que representan casos individuales de NNA.  
-Incluye variables de tipo:
-
-- **Sociodemográficas:** edad, sexo, localidad, entre otras.  
-- **Territoriales:** red o entidad de atención, profesional asignado, etc.  
-- **Intervención:** tipo de proceso, estado actual, resultados alcanzados.  
-- **Fechas y seguimiento:** periodos de ingreso, desvinculación, o finalización.  
-
-Los valores `99999` se utilizan para representar **datos faltantes o no aplicables**, por lo que serán tratados como valores ausentes (`NaN`) durante la limpieza.
-
----
-
-### Propósito de esta fase
-- Explorar la estructura general de los datos.  
-- Determinar el número de variables y tipos (numéricas, categóricas, texto).  
-- Analizar la distribución de los valores válidos y ausentes.  
-- Detectar variables con baja completitud o posibles errores de codificación.  
-- Identificar las variables con **potencial analítico** para el proceso de clustering.
+- **Análisis Exploratorio de Datos (EDA)**: Comprensión de distribuciones, valores faltantes, outliers
+- **Análisis de Correspondencias Múltiples (MCA)**: Reducción dimensional para variables categóricas
+- **K-Means Clustering**: Segmentación en perfiles homogéneos
+- **Validación**: Silhouette Score, Davies-Bouldin Index, Chi-Square tests
 
 ---
 
-### Actividades principales
+## Estructura del Proyecto
 
-1. **Carga y revisión inicial del dataset:**  
-   - Lectura de ambas hojas (`variables`, `BD`).  
-   - Visualización de las primeras filas, tipos de datos y tamaño.  
+### Archivos Principales
 
-2. **Análisis de completitud:**  
-   - Cálculo del porcentaje de valores válidos y de `99999` por variable.  
-   - Identificación de las variables con más del 40% de información disponible.  
+```
+proyecto-nna/
+├── README.md (este archivo)
+├── Notebooks/
+│   ├── 01_Data_Understanding_EDA.ipynb
+│   ├── 02_Data_Preparation.ipynb
+│   ├── 03_Modeling_MCA.ipynb
+│   └── 04_Evaluation_Deployment.ipynb
+├── datos/
+│   ├── datos_filtrados.xlsx
+│   ├── datos_mca_preparados.csv
+│   └── datos_con_clusters_LIMPIO.csv
+├── resultados/
+│   ├── datos_finales_con_perfiles.csv
+│   ├── kpis_programa.xlsx
+│   ├── recomendaciones_estrategicas.txt
+│   ├── resumen_ejecutivo.txt
+│   ├── plan_accion_priorizado.xlsx
+│   └── infografia_perfiles.png
+└── documentacion/
+    ├── Business_Understanding.md
+    └── Guia_Tecnica.md
+```
 
-3. **Evaluación de distribución de datos:**  
-   - Estadísticos descriptivos básicos (media, mediana, moda, desviación estándar).  
-   - Conteo de categorías y detección de valores atípicos.  
+### Dataset
 
-4. **Análisis exploratorio visual:**  
-   - Gráficos de distribución de edad, localidad, tipo de intervención y estado de desvinculación.  
-   - Heatmap de completitud de variables.  
-
-5. **Selección preliminar de variables candidatas:**  
-   - Criterios: relevancia conceptual + completitud ≥ 40%.  
-   - Exclusión temporal de campos con alta proporción de 99999 o texto libre no estructurado.
+- **Período**: 2015-2025
+- **Registros**: 56,473 NNA
+- **Variables originales**: 50+
+- **Variables seleccionadas**: 19 (con ≥40% completitud)
+- **Variables categóricas**: 16
+- **Variables discretizadas**: 3
 
 ---
 
-### Consideraciones técnicas
-- Se reemplazarán los valores `99999` por `NaN` para su correcto manejo en Python.  
-- Las variables categóricas serán tratadas mediante codificación numérica (One-Hot Encoding o Label Encoding).  
-- Se mantendrá trazabilidad del proceso de limpieza (registro de transformaciones).  
-- En caso de bases muy grandes, se podrá utilizar una **muestra aleatoria representativa** para las pruebas iniciales.  
+## Resultados Esperados
+
+### Perfiles Identificados (4 Clusters)
+
+#### Perfil 1: Intervención Exitosa Documentada (41.9%)
+- 23,672 NNA
+- Datos completos y seguimiento integral
+- Tasa de desvinculación: 77.3%
+- Estratos bajos, mayoría colombianos
+
+#### Perfil 2: Registro Administrativo Incompleto (35.5%)
+- 20,065 NNA
+- Problema sistémico de calidad de datos
+- Alta tasa de desvinculación (83.6%) a pesar de incompletitud
+- Requiere intervención en sistemas de registro
+
+#### Perfil 3: Seguimiento Inconcluso (8.3%)
+- 4,661 NNA
+- Alto riesgo
+- 57.6% sin resultado final documentado
+- Posible abandono o pérdida de contacto
+
+#### Perfil 4: Casos Sin Cierre Documentado (14.3%)
+- 8,075 NNA
+- 100% sin resultado de desvinculación
+- Posibles casos activos o sin cierre administrativo
+
+### Indicadores Clave de Desempeño (KPIs)
+
+| Indicador | Valor | Meta | Estado |
+|-----------|-------|------|--------|
+| Completitud de Datos | 66.2% | ≥90% | Alerta |
+| Tasa Desvinculación Exitosa | 75.8% | ≥80% | Satisfactorio |
+| Tasa Cierre Administrativo | 54.5% | ≥95% | Crítico |
+| Seguimiento Completo (P1) | 41.9% | ≥60% | Alerta |
+| Casos en Riesgo (P3) | 8.3% | ≤5% | Alerta |
 
 ---
 
-### Entregables de esta fase
-1. **Informe exploratorio inicial:** resumen estadístico y visual de las variables.  
-2. **Tabla de completitud:** porcentaje de datos válidos por variable.  
-3. **Lista de variables seleccionadas** para la fase de preparación y modelado.  
-4. **Notebook reproducible (`01_data_understanding.ipynb`)** con todo el proceso documentado.  
+## Cronograma
+
+| Fase | Duración | Estado |
+|------|----------|--------|
+| Business Understanding | 0.5 semana | ✓ Completado |
+| Data Understanding (EDA) | 0.5 semanas | ✓ Completado |
+| Data Preparation | 0.5 semanas | ✓ Completado |
+| Modeling (MCA + Clustering) | 0.5 semanas | ✓ Completado |
+| Evaluation & Interpretation | 0.5 semanas | ✓ Completado |
+| Deployment & Documentation | 0.5 semanas | ✓ Completado |
+| **TOTAL** | **3 semanas** | ✓ **COMPLETADO** |
+
 
 ---
 
-### Próximo paso
-Realizar el **análisis exploratorio y de completitud**, el cual incluirá:
-- Tabla con porcentaje de valores válidos por variable.  
-- Heatmap de completitud.  
-- Primeras visualizaciones descriptivas sobre las características principales de la población analizada.  
+## Uso del Proyecto
 
-Este análisis permitirá definir con precisión qué variables serán incluidas en la siguiente fase de **Preparación de Datos (Data Preparation)**, donde se abordará la limpieza, codificación y transformación necesarias para el modelado de *clustering*.
+### Requisitos Técnicos
 
+- Python 3.8+
+- Bibliotecas: pandas, numpy, scikit-learn, prince, matplotlib, seaborn
+- Google Colab o Jupyter Notebook
+- Almacenamiento: Google Drive (mínimo 5GB)
+
+### Instalación
+
+```bash
+# Clonar repositorio
+git clone <url-del-repositorio>
+
+# Instalar dependencias
+pip install -r requirements.txt
+
+# Ejecutar notebooks en orden (01 a 04)
+```
+
+### Estructura de Ejecución
+
+1. **Notebook 1**: Data Understanding - Exploración inicial (EDA)
+2. **Notebook 2**: Data Preparation - Limpieza y transformación
+3. **Notebook 3**: Modeling - MCA y clustering
+4. **Notebook 4**: Evaluation & Deployment - Interpretación y recomendaciones
+
+---
+
+## Limitaciones y Consideraciones
+
+### Limitaciones Conocidas
+
+- Completitud variable de datos (0-100% entre variables)
+- Sobrerrepresentación de años recientes (2020-2025)
+- Concentración geográfica en Bogotá
+- Información retrospectiva con posibles sesgos de registro
+
+### Supuestos del Análisis
+
+- Los datos registrados reflejan validamente la realidad de cada NNA
+- Las variables disponibles capturan suficientemente la heterogeneidad
+- Los perfiles serán estables por al menos 12 meses
+- La organización tiene capacidad para implementar recomendaciones
+
+### Consideraciones Éticas
+
+- Anonimización completa de identidades
+- Evitar etiquetado estigmatizante
+- Enfoque basado en derechos del niño
+- Transparencia en decisiones y algoritmos
+
+---
+
+## Referencias
+
+### Metodología
+- CRISP-DM: Industry Standard Process for Data Mining
+
+### Técnicas Estadísticas
+- Análisis de Correspondencias Múltiples (MCA)
+- K-Means Clustering
+- Chi-Square Testing
+- Silhouette Analysis
+
+---
+
+## Autores y Contribuciones
+
+**Proyecto completado con metodología CRISP-DM**
+
+Para preguntas, sugerencias o reportar problemas, contactar al equipo de análisis de datos.
+
+---
+
+## Licencia
+
+Este proyecto utiliza datos confidenciales de la organización. El uso está restringido a propósitos de análisis interno autorizado.
+
+---
+
+## Control de Versiones
+
+| Versión | Fecha | Cambios |
+|---------|-------|---------|
+| 1.0 | 2025 | Versión inicial completa |
+
+---
+
+**Última actualización**: 2025
+**Estado**: Proyecto Completado
+**Fase CRISP-DM**: 1-6 (Todas Completadas)
