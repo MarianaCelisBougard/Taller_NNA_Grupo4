@@ -12,7 +12,7 @@ Desde un enfoque estadístico, el proyecto busca **caracterizar e identificar gr
 ### Propósito analítico
 Desarrollar un proceso de análisis estadístico siguiendo la metodología **CRISP-DM**, que permita:
 - Evaluar la **calidad, estructura y completitud** de la información.
-- Aplicar **técnicas de reducción de dimensionalidad (PCA)** y **agrupamiento (clustering)**.
+- Aplicar **técnicas de reducción de dimensionalidad (MCA)** y **agrupamiento (clustering)**.
 - Generar **perfiles interpretables de NNA** con características similares según los registros institucionales.
 
 ---
