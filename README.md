@@ -1,8 +1,12 @@
 # Caracterización de NNA en Programas de Intervención en Trabajo Infantil - Grupo 4
 
-## Estudiantes: Mariana Celis & Yuneidy Gutierrez
+## Estudiantes: Mariana Celis, Yuneidy Gutierrez & Josue Pedraza
 
 ## CRISP-DM Fase 1: Business Understanding
+
+# Caracterización de NNA en Programas de Intervención en Trabajo Infantil
+
+**CRISP-DM Fase 1: Business Understanding**
 
 ---
 
@@ -14,8 +18,13 @@
 - [Metodología](#metodología)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Resultados Esperados](#resultados-esperados)
+- [Criterios de Éxito](#criterios-de-éxito)
+- [Casos de Éxito](#casos-de-éxito)
 - [Cronograma](#cronograma)
 - [Equipo y Stakeholders](#equipo-y-stakeholders)
+- [Impacto Esperado](#impacto-esperado)
+- [Limitaciones y Consideraciones](#limitaciones-y-consideraciones)
+- [Referencias](#referencias)
 
 ---
 
@@ -70,14 +79,14 @@ Caracterizar y segmentar la población de NNA mediante análisis multivariado pa
 
 ### CRISP-DM: 6 Fases
 
-| Fase | Descripción | Entregable |
-|------|-------------|-----------|
-| **1. Business Understanding** | Definición de objetivos, problemas y oportunidades | Documento de contexto |
-| **2. Data Understanding** | Exploración, análisis de calidad y estructura | Reporte EDA |
-| **3. Data Preparation** | Limpieza, transformación y preparación | Dataset preparado |
-| **4. Modeling** | MCA y clustering para identificar perfiles | 4 perfiles definidos |
-| **5. Evaluation** | Validación, interpretación y recomendaciones | Reporte de hallazgos |
-| **6. Deployment** | Implementación, monitoreo y sostenibilidad | Plan de acción |
+| Fase | Descripción | Entregable | Estado |
+|------|-------------|-----------|--------|
+| Business Understanding | Definición de objetivos y oportunidades | Documento de contexto | Completado |
+| Data Understanding | Exploración, análisis de calidad | Reporte EDA | Completado |
+| Data Preparation | Limpieza, transformación | Dataset preparado | Completado |
+| Modeling | MCA y clustering | 4 perfiles definidos | Completado |
+| Evaluation | Validación, interpretación | Reporte de hallazgos | Completado |
+| Deployment | Implementación y monitoreo | Plan de acción | Completado |
 
 ### Técnicas Utilizadas
 
@@ -90,12 +99,10 @@ Caracterizar y segmentar la población de NNA mediante análisis multivariado pa
 
 ## Estructura del Proyecto
 
-### Archivos Principales
-
 ```
 proyecto-nna/
-├── README.md (este archivo)
-├── Notebooks/
+├── README.md
+├── notebooks/
 │   ├── 01_Data_Understanding_EDA.ipynb
 │   ├── 02_Data_Preparation.ipynb
 │   ├── 03_Modeling_MCA.ipynb
@@ -111,7 +118,7 @@ proyecto-nna/
 │   ├── resumen_ejecutivo.txt
 │   ├── plan_accion_priorizado.xlsx
 │   └── infografia_perfiles.png
-└── documentacion/
+└── docs/
     ├── Business_Understanding.md
     └── Guia_Tecnica.md
 ```
@@ -120,11 +127,8 @@ proyecto-nna/
 
 - **Período**: 2015-2025
 - **Registros**: 56,473 NNA
-- **Variables originales**: 50+
-- **Variables seleccionadas**: 19 (con ≥40% completitud)
-- **Variables categóricas**: 16
-- **Variables discretizadas**: 3
-
+- **Variables originales**: 115
+- **Variables seleccionadas**: 28 (con >= 40% completitud)
 ---
 
 ## Criterios de Éxito
@@ -147,37 +151,62 @@ proyecto-nna/
 ### Perfiles Identificados (4 Clusters)
 
 #### Perfil 1: Intervención Exitosa Documentada (41.9%)
-- 23,672 NNA
-- Datos completos y seguimiento integral
-- Tasa de desvinculación: 77.3%
-- Estratos bajos, mayoría colombianos
+
+- **Población**: 23,672 NNA
+- **Características**: Datos completos, seguimiento integral
+- **Tasa de desvinculación**: 77.3%
+- **Perfil sociodemográfico**: Estratos bajos, mayoría colombianos
+- **Implicación**: Modelo a replicar en toda la organización
 
 #### Perfil 2: Registro Administrativo Incompleto (35.5%)
-- 20,065 NNA
-- Problema sistémico de calidad de datos
-- Alta tasa de desvinculación (83.6%) a pesar de incompletitud
-- Requiere intervención en sistemas de registro
+
+- **Población**: 20,065 NNA
+- **Características**: Problema sistémico de captura de datos
+- **Tasa de desvinculación**: 83.6% (alta a pesar de incompletitud)
+- **Brecha**: 100% sin información de edad y estrato
+- **Implicación**: Requiere intervención urgente en sistemas
 
 #### Perfil 3: Seguimiento Inconcluso (8.3%)
-- 4,661 NNA
-- Alto riesgo
-- 57.6% sin resultado final documentado
-- Posible abandono o pérdida de contacto
+
+- **Población**: 4,661 NNA
+- **Características**: Alto riesgo de abandono
+- **Sin resultado final**: 57.6% de los casos
+- **Riesgo**: Posible pérdida de contacto
+- **Implicación**: Necesita alertas tempranas y retención
 
 #### Perfil 4: Casos Sin Cierre Documentado (14.3%)
-- 8,075 NNA
-- 100% sin resultado de desvinculación
-- Posibles casos activos o sin cierre administrativo
+
+- **Población**: 8,075 NNA
+- **Características**: Sin resultado de desvinculación
+- **Estado**: Posibles casos activos o sin cierre administrativo
+- **Implicación**: Protocolo de cierre obligatorio requerido
 
 ### Indicadores Clave de Desempeño (KPIs)
 
-| Indicador | Valor | Meta | Estado |
-|-----------|-------|------|--------|
-| Completitud de Datos | 66.2% | ≥90% | Alerta |
-| Tasa Desvinculación Exitosa | 75.8% | ≥80% | Satisfactorio |
-| Tasa Cierre Administrativo | 54.5% | ≥95% | Crítico |
-| Seguimiento Completo (P1) | 41.9% | ≥60% | Alerta |
-| Casos en Riesgo (P3) | 8.3% | ≤5% | Alerta |
+| Indicador | Valor Actual | Meta | Estado |
+|-----------|-------------|------|--------|
+| Completitud de Datos | 66.2% | >= 90% | Alerta |
+| Tasa Desvinculación Exitosa | 75.8% | >= 80% | Satisfactorio |
+| Tasa Cierre Administrativo | 54.5% | >= 95% | Crítico |
+| Seguimiento Completo (P1) | 41.9% | >= 60% | Alerta |
+| Casos en Riesgo (P3) | 8.3% | <= 5% | Alerta |
+
+---
+
+## Criterios de Éxito
+
+### Criterios Técnicos
+
+| Criterio | Métrica | Meta | Resultado |
+|----------|---------|------|-----------|
+| Varianza explicada | Inercia acumulada 5 dims | >= 50% | 68.2% - CUMPLIDO |
+| Calidad clustering | Silhouette Score | > 0.5 | 0.559 - CUMPLIDO |
+| Separación clusters | Davies-Bouldin Index | < 1.0 | 0.773 - CUMPLIDO |
+| Tamaño mínimo por perfil | N registros | >= 1,000 | Todos cumplen - CUMPLIDO |
+| Diferenciación | Chi-Square p-value | < 0.05 | Cumplido - CUMPLIDO |
+| Reproducibilidad | Random state | Determinístico | Implementado - CUMPLIDO |
+
+**Resultado Final**: Todos los criterios técnicos alcanzados exitosamente
 
 ---
 
@@ -185,44 +214,14 @@ proyecto-nna/
 
 | Fase | Duración | Estado |
 |------|----------|--------|
-| Business Understanding | 0.5 semana | ✓ Completado |
-| Data Understanding (EDA) | 0.5 semanas | ✓ Completado |
-| Data Preparation | 0.5 semanas | ✓ Completado |
-| Modeling (MCA + Clustering) | 0.5 semanas | ✓ Completado |
-| Evaluation & Interpretation | 0.5 semanas | ✓ Completado |
-| Deployment & Documentation | 0.5 semanas | ✓ Completado |
-| **TOTAL** | **3 semanas** | ✓ **COMPLETADO** |
+| Business Understanding | 0.5 semana | Completado |
+| Data Understanding (EDA) | 0.5 semanas | Completado |
+| Data Preparation | 0.5 semanas | Completado |
+| Modeling (MCA + Clustering) | 0.5 semanas | Completado |
+| Evaluation & Interpretation | 0.5 semanas | Completado |
+| Deployment & Documentation | 0.5 semanas | Completado |
+| **TOTAL** | **3 semanas** | **COMPLETADO** |
 
-
----
-
-## Uso del Proyecto
-
-### Requisitos Técnicos
-
-- Python 3.8+
-- Bibliotecas: pandas, numpy, scikit-learn, prince, matplotlib, seaborn
-- Google Colab o Jupyter Notebook
-- Almacenamiento: Google Drive (mínimo 5GB)
-
-### Instalación
-
-```bash
-# Clonar repositorio
-git clone <url-del-repositorio>
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Ejecutar notebooks en orden (01 a 04)
-```
-
-### Estructura de Ejecución
-
-1. **Notebook 1**: Data Understanding - Exploración inicial (EDA)
-2. **Notebook 2**: Data Preparation - Limpieza y transformación
-3. **Notebook 3**: Modeling - MCA y clustering
-4. **Notebook 4**: Evaluation & Deployment - Interpretación y recomendaciones
 
 ---
 
@@ -242,21 +241,13 @@ pip install -r requirements.txt
 - Los perfiles serán estables por al menos 12 meses
 - La organización tiene capacidad para implementar recomendaciones
 
-### Consideraciones Éticas
-
-- Anonimización completa de identidades
-- Evitar etiquetado estigmatizante
-- Enfoque basado en derechos del niño
-- Transparencia en decisiones y algoritmos
-
----
-
-## Referencias
 
 ### Metodología
+
 - CRISP-DM: Industry Standard Process for Data Mining
 
 ### Técnicas Estadísticas
+
 - Análisis de Correspondencias Múltiples (MCA)
 - K-Means Clustering
 - Chi-Square Testing
@@ -264,28 +255,8 @@ pip install -r requirements.txt
 
 ---
 
-## Autores y Contribuciones
 
-**Proyecto completado con metodología CRISP-DM**
-
-Para preguntas, sugerencias o reportar problemas, contactar al equipo de análisis de datos.
-
----
-
-## Licencia
-
-Este proyecto utiliza datos confidenciales de la organización. El uso está restringido a propósitos de análisis interno autorizado.
-
----
-
-## Control de Versiones
-
-| Versión | Fecha | Cambios |
-|---------|-------|---------|
-| 1.0 | 2025 | Versión inicial completa |
-
----
 
 **Última actualización**: 2025
-**Estado**: Proyecto Completado
-**Fase CRISP-DM**: 1-6 (Todas Completadas)
+
+**Proyecto**: COMPLETADO - Todas las fases CRISP-DM implementadas
